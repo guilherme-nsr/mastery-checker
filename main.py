@@ -18,6 +18,7 @@ def get_encrypted_summoner_id(summoner):
 
 def main():
     print("Verifique a sua maestria em League of Legends!")
+    print()
 
     requests_cache.install_cache("cache")
 
@@ -25,6 +26,10 @@ def main():
 
     if champions_response.status_code != 200:
         print("Request error. Status code:", champions_response.status_code)
+
+    summoner = input("Forneça o seu nome de invocador (servidor Brasileiro): ")
+
+    encrypted_summoner_id = get_encrypted_summoner_id(summoner)
 
 
 if __name__ == "__main__":
