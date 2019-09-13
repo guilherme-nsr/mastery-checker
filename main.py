@@ -13,7 +13,7 @@ def get_encrypted_summoner_id(summoner):
         return response.json()["id"]
 
     else:
-        print("Error: status code:", response.status_code)
+        print("Request error. Status code:", response.status_code)
 
 
 def main():
