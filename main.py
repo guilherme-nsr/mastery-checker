@@ -31,6 +31,13 @@ def main():
 
     encrypted_summoner_id = get_encrypted_summoner_id(summoner)
 
+    mastery_response = requests.get("https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-"
+                                    "summoner/%s?api_key=%s" % (encrypted_summoner_id, API_KEY))
+
+    mastery = mastery_response.json()
+
+    top_three_mastery = mastery[:3]
+
 
 if __name__ == "__main__":
     main()
