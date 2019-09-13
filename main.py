@@ -12,8 +12,11 @@ def get_encrypted_summoner_id(summoner):
     if response.status_code == 200:
         return response.json()["id"]
 
+    elif response.status_code == 404:
+        raise Exception("Invocador inexistente")
+
     else:
-        print("Request error. Status code:", response.status_code)
+        raise Exception("Request error. Status code:", response.status_code)
 
 
 def main():
@@ -23,9 +26,6 @@ def main():
     requests_cache.install_cache("cache")
 
     champions_response = requests.get("http://ddragon.leagueoflegends.com/cdn/9.18.1/data/pt_BR/champion.json")
-
-    if champions_response.status_code != 200:
-        print("Request error. Status code:", champions_response.status_code)
 
     summoner = input("Forneça o seu nome de invocador (servidor Brasileiro): ")
 
