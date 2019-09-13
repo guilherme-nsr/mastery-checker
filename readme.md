@@ -1,0 +1,1 @@
+**Mastery Checker** is a simple program that uses [Riot Games API](https://developer.riotgames.com/) to show your mastered champions in the game!
