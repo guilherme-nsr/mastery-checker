@@ -2,6 +2,20 @@ import requests
 import requests_cache
 
 
+API_KEY = ""  # Private API key omitted
+
+
+def get_encrypted_summoner_id(summoner):
+    response = requests.get("https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/%s?api_key=%s" %
+                            (summoner, API_KEY))
+
+    if response.status_code == 200:
+        return response.json()["id"]
+
+    else:
+        print("Error: status code:", response.status_code)
+
+
 def main():
     print("Verifique a sua maestria em League of Legends!")
 
