@@ -2,7 +2,7 @@ import requests
 import requests_cache
 
 
-API_KEY = "RGAPI-9d842ba0-378e-403c-9d7c-b3ab379b79cc"  # Private API key omitted
+API_KEY = ""  # Private API key omitted
 
 
 def get_encrypted_summoner_id(summoner):
@@ -52,8 +52,9 @@ def main():
     print("%s - Nível de invocador %d\nSeus top 3 campeões:" % (summoner, summoner_level))
     print()
 
-    for mastered in top_three_mastery:
-        print("%s: %d pontos" % (get_champion_name(champions, str(mastered["championId"])), mastered["championPoints"]))
+    for i, mastered in enumerate(top_three_mastery):
+        print("%d - %s: %d pontos" % (i+1, get_champion_name(champions, str(mastered["championId"])),
+                                      mastered["championPoints"]))
 
 
 if __name__ == "__main__":
