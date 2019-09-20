@@ -2,7 +2,7 @@ import requests
 import requests_cache
 
 
-API_KEY = ""  # Private API key omitted
+API_KEY = "RGAPI-9d842ba0-378e-403c-9d7c-b3ab379b79cc"  # Private API key omitted
 
 
 def get_encrypted_summoner_id(summoner):
@@ -24,7 +24,7 @@ def get_encrypted_summoner_id(summoner):
 def get_champion_name(champions, champion_id):
     for champion in champions["data"]:
         if champions["data"][champion]["key"] == champion_id:
-            return champion
+            return champions["data"][champion]["name"]
 
 
 def main():
