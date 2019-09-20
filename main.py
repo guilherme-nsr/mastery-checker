@@ -33,7 +33,11 @@ def main():
 
     requests_cache.install_cache("cache")
 
-    champions_response = requests.get("http://ddragon.leagueoflegends.com/cdn/9.18.1/data/pt_BR/champion.json")
+    versions_response = requests.get("https://ddragon.leagueoflegends.com/api/versions.json")
+    newest_version = versions_response.json()[0]
+
+    champions_response = requests.get("http://ddragon.leagueoflegends.com/cdn/%s/data/pt_BR/champion.json" %
+                                      newest_version)
     champions = champions_response.json()
 
     summoner = input("Forneça o seu nome de invocador (servidor Brasileiro): ")
@@ -41,7 +45,6 @@ def main():
 
     mastery_response = requests.get("https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-"
                                     "summoner/%s?api_key=%s" % (encrypted_summoner_id, API_KEY))
-
     mastery = mastery_response.json()
 
     top_three_mastery = mastery[:3]
