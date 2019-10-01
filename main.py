@@ -1,8 +1,11 @@
 import requests
 import requests_cache
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-API_KEY = ""  # Private API key omitted
+API_KEY = os.getenv("API_KEY")  # Private API key omitted
 
 
 def get_encrypted_summoner_id(summoner):
